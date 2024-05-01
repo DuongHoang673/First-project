@@ -17,9 +17,9 @@ class DisplayInfor extends React.Component{
         return(
             <div>
                 <div>
-                   <spna onClick = {() => {this.handleShowHide()}}>
+                   <button onClick = {() => {this.handleShowHide()}}>
                     {this.state.isShowListUser === true ? "Hide list user:" : "Show list user:" }
-                    </spna> 
+                    </button> 
                 </div>
                 { this.state.isShowListUser &&
                 <div>
