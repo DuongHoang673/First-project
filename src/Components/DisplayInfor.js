@@ -3,9 +3,28 @@ import './DisplayInfor.scss';
 import Logo from './../logo.svg';
 
 class DisplayInfor extends React.Component{
+    constructor(props) {
+        console.log('>>> call me constructor')
+        super(props);
+        this.state = {
+            isShowListUser: true
+        }  
+    }
 
-    state = {
-        isShowListUser: true
+    componentDidMount() {
+        console.log('>>> call me component did mount')
+        setTimeout(() => {
+            document.title = 'Duong dep trai nhat the gioi'
+        }, 3000);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('>>> call me component update')
+        if(this.props.listUsers !== prevProps.listUsers){
+            if(this.props.listUsers.length === 5){
+                alert('Ban co 5 nguoi choi')
+            }
+        }
     }
 
     handleShowHide = () => {
@@ -15,6 +34,7 @@ class DisplayInfor extends React.Component{
     }
 
     render(){
+        console.log('>>> call me render')
         const {listUsers} = this.props;
 
         return(
@@ -29,12 +49,19 @@ class DisplayInfor extends React.Component{
                 { this.state.isShowListUser &&
                 <div>
                 { listUsers?.map((user, index) => {
-                    console.log(">>> check map user", user)
+
 
                     return (
                         <div key = {user.id} className = {+user.age > 18 ? "green" : "red"}>
-                            <div>Ten toi la: {user.name}</div>
-                            <div>Tuoi: {user.age}</div>
+                            <div>
+                                <div>Ten toi la: {user.name}</div>
+                                <div>Tuoi: {user.age}</div>
+                            </div>
+
+                            <div>
+                                <button onClick={() => this.props.handleDeleteUser(user.id)}>Delete</button>
+                            </div>
+                            
                             <hr/>
                         </div>
                     )
