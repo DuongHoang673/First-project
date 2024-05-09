@@ -70,9 +70,9 @@ const MyComponents = (props) => {
         // })
     }
 
-    const handleDeleteUser = (UserId) => {
+    const handleDeleteUser = (userId) => {
         let listUsersClone = listUsers;
-        listUsersClone = listUsersClone.filter(item => item.id !== UserId);
+        listUsersClone = listUsersClone.filter(item => item.id !== userId);
         setlisUsers(listUsersClone);
         // this.setState({
         //     listUsers: listUsersClone

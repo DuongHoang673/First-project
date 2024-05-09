@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './DisplayInfor.scss';
 import Logo from './../logo.svg';
 
@@ -48,6 +48,15 @@ const DisplayInfor = (props) => {
     const handleShowHideListUsers = () => {
         setShowHideListUsers (!isShowHideListUsers);
     }
+
+    useEffect(
+        () => {
+        if(listUsers.length === 0){
+            alert("Ban da xoa het Users")
+        }
+        console.log(">>> call me useEffect")
+    }, [listUsers]
+    );
 
     return (
 
